@@ -1,7 +1,4 @@
-const invoicesData = require("./invoices.json");
-const playsData = require("./plays.json");
-
-function statement(invoice, plays) {
+module.exports = function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구 내역 (고객명 : ${invoice.customer})\n`;
@@ -46,8 +43,4 @@ function statement(invoice, plays) {
   result += `적립 포인트 : ${volumeCredits}점\n`;
 
   return result;
-}
-
-for (let invoice of invoicesData) {
-  console.log(statement(invoice, playsData));
-}
+};

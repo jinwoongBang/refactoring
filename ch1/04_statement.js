@@ -1,4 +1,12 @@
 function statement(invoice, plays) {
+  function appleSauce() {
+    let totalAmount = 0;
+    for (let perf of invoice.performances) {
+      totalAmount += amountFor(perf);
+    }
+    return totalAmount;
+  }
+
   function totalVolumeCredits() {
     let volumeCredits = 0;
     for (let perf of invoice.performances) {
@@ -57,11 +65,6 @@ function statement(invoice, plays) {
     result += `${playFor(perf).name} : ${usd(amountFor(perf))} (${
       perf.audience
     }석)\n`;
-  }
-  
-  let totalAmount = 0;
-  for (let perf of invoice.performances) {
-    totalAmount += amountFor(perf);
   }
 
   result += `총액 : ${usd(totalAmount)}\n`;

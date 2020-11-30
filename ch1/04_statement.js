@@ -1,8 +1,7 @@
 const createStatementData = require("./createStatementData");
 
-function statement(invoice, plays) {
+function htmlStatement(invoice, plays) {
   return renderHtml(createStatementData(invoice, plays));
-  // return renderPlainText(createStatementData(invoice, plays));
 }
 
 function renderHtml(data) {
@@ -29,6 +28,10 @@ function renderHtml(data) {
   }
 }
 
+function statement(invoice, plays) {
+  return renderHtml(createStatementData(invoice, plays));
+}
+
 function renderPlainText(data) {
   let result = `청구 내역 (고객명 : ${data.customer})\n`;
   for (let perf of data.performances) {
@@ -48,4 +51,7 @@ function renderPlainText(data) {
   }
 }
 
-module.exports = statement;
+module.exports = {
+  statement,
+  htmlStatement,
+};

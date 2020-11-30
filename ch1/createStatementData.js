@@ -1,4 +1,15 @@
-module.exports = function createStatementData(invoice, plays) {
+module.exports = {
+  createStatementData,
+};
+
+class PerformanceCalculator {
+  constructor(aPerformance, aPlay) {
+    this.performance = aPerformance;
+    this.play = aPlay;
+  }
+}
+
+function createStatementData(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformance);
@@ -7,8 +18,9 @@ module.exports = function createStatementData(invoice, plays) {
   return statementData;
 
   function enrichPerformance(aPerformance) {
+    const calculator = new PerformanceCalculator(aPerformance, playFor(result));
     const result = Object.assign({}, aPerformance);
-    result.play = playFor(result);
+    result.play = calculator.play;
     result.amount = amountFor(result);
     result.volumeCredits = volumeCreditsFor(result);
     return result;
@@ -55,4 +67,4 @@ module.exports = function createStatementData(invoice, plays) {
   function totalVolumeCredits(data) {
     return data.performances.reduce((total, p) => total + p.volumeCredits, 0);
   }
-};
+}

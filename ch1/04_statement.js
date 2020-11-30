@@ -17,15 +17,8 @@ function renderHtml(data) {
   result += "</table>\n";
   result += `<p>총액 : <em>${usd(data.totalAmount)}</em></p>\n`;
   result += `<p>적립 포인트 : <em>${data.totalVolumeCredits}</em>점</p>\n`;
-  return result;
 
-  function usd(aNumber) {
-    return new Intl.NumberFormat("en-us", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-    }).format(aNumber / 100);
-  }
+  return result;
 }
 
 function statement(invoice, plays) {
@@ -41,14 +34,14 @@ function renderPlainText(data) {
   result += `적립 포인트 : ${data.totalVolumeCredits}점\n`;
 
   return result;
+}
 
-  function usd(aNumber) {
-    return new Intl.NumberFormat("en-us", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-    }).format(aNumber / 100);
-  }
+function usd(aNumber) {
+  return new Intl.NumberFormat("en-us", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(aNumber / 100);
 }
 
 module.exports = {

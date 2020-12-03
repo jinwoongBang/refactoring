@@ -1,6 +1,7 @@
-const { Producer } = require("./Producer");
+// const { Producer } = require("./Producer");
+import Producer from "./Producer.js";
 
-function sampleProvinceData() {
+export function sampleProvinceData() {
   return {
     name: "Asia",
     producers: [
@@ -13,7 +14,7 @@ function sampleProvinceData() {
   };
 }
 
-class Province {
+export class Province {
   constructor() {
     this._name = doc.name;
     this._producers = [];
@@ -82,3 +83,8 @@ class Province {
     return result;
   }
 }
+
+// module.exports = {
+//   Province,
+//   sampleProvinceData,
+// };

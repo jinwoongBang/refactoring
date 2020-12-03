@@ -1,5 +1,3 @@
-exports.module = { Producer };
-
 class Producer {
   constructor(aProvince, data) {
     this._province = aProvince;
@@ -28,3 +26,6 @@ class Producer {
     this._production = newProduction;
   }
 }
+
+// module.exports = { Producer };
+export default Producer;

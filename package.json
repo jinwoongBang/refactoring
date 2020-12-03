@@ -5,6 +5,7 @@
   "repository": "https://github.com/jinwoongBang/refactoring.git",
   "author": "jinwoongBang <dlopo123@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "mocha": "^8.2.1"
   }

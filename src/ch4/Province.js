@@ -56,7 +56,8 @@ export class Province {
 
   // 생산량 부족분 계산 로직
   get shortfall() {
-    return this._demand - this.totalProduction;
+    return this._demand - this.totalProduction * 2 // 오류 주입 ;
+    // return this._demand - this.totalProduction;
   }
   // 수익을 계산하는 코드
   get profit() {

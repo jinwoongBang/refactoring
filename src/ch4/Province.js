@@ -15,7 +15,7 @@ export function sampleProvinceData() {
 }
 
 export class Province {
-  constructor() {
+  constructor(doc) {
     this._name = doc.name;
     this._producers = [];
     this._totalProduction = 0;

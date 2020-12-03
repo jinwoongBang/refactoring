@@ -1,0 +1,8 @@
+{
+  "name": "Refactoring",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jinwoongBang/refactoring.git",
+  "author": "jinwoongBang <dlopo123@gmail.com>",
+  "license": "MIT"
+}

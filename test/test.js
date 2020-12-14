@@ -31,18 +31,27 @@ describe("province", function () {
     expect(asia.profit).equals(292);
   });
   it("zero demand", function () {
+    // 수요가 없다.
     asia.demand = 0;
     expect(asia.shortfall).equals(-25);
     expect(asia.profit).equals(0);
   });
   it("negative demand", function () {
+    // 수요가 마이너스
     asia.demand = -1;
     expect(asia.shortfall).equals(-26);
     expect(asia.profit).equals(-10);
   });
+  it("empty string demand", function () {
+    // 수요 입력란이 비어 있다.
+    asia.demand = "";
+    expect(asia.shortfall).NaN;
+    expect(asia.profit).NaN;
+  });
 });
 
 describe("no producers", function () {
+  // 생산자가 없다.
   let noProducers;
   beforeEach(function () {
     const data = {
@@ -60,5 +69,19 @@ describe("no producers", function () {
 
   it("profit", function () {
     expect(noProducers.profit).equals(0);
+  });
+});
+
+describe("string for producers", function () {
+  // 생산자 수 필드에 문자열을 대입한다.
+  it("", function () {
+    const data = {
+      name: "String Producers",
+      producers: "",
+      demand: 30,
+      price: 20,
+    };
+    const prov = new Province(data);
+    expect(prov.shortfall).equals(0);
   });
 });

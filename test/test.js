@@ -14,12 +14,15 @@ describe("province", function () {
 });
 
 describe("province", function () {
+  let asia;
+  // beforeEach 는 각각 테스트 바로 전에 실행 됨.
+  beforeEach(function () {
+    asia = new Province(sampleProvinceData()); // [1] 픽스쳐 설정 (고정장치)
+  });
   it("shortfall", function () {
-    const asia = new Province(sampleProvinceData()); // [1] 픽스쳐 설정 (고정장치)
     expect(asia.shortfall).equal(5);
   });
   it("profit", function () {
-    const asia = new Province(sampleProvinceData());
     expect(asia.profit).equals(230);
   });
 });

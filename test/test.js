@@ -18,4 +18,8 @@ describe("province", function () {
     const asia = new Province(sampleProvinceData()); // [1] 픽스쳐 설정 (고정장치)
     expect(asia.shortfall).equal(5);
   });
+  it("profit", function () {
+    const asia = new Province(sampleProvinceData());
+    expect(asia.profit).equals(230);
+  });
 });

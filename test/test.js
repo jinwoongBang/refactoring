@@ -25,4 +25,40 @@ describe("province", function () {
   it("profit", function () {
     expect(asia.profit).equals(230);
   });
+  it("change production", function () {
+    asia.producers[0].production = 20;
+    expect(asia.shortfall).equals(-6);
+    expect(asia.profit).equals(292);
+  });
+  it("zero demand", function () {
+    asia.demand = 0;
+    expect(asia.shortfall).equals(-25);
+    expect(asia.profit).equals(0);
+  });
+  it("negative demand", function () {
+    asia.demand = -1;
+    expect(asia.shortfall).equals(-26);
+    expect(asia.profit).equals(-10);
+  });
+});
+
+describe("no producers", function () {
+  let noProducers;
+  beforeEach(function () {
+    const data = {
+      name: "No Producers",
+      producers: [],
+      demand: 30,
+      price: 20,
+    };
+    noProducers = new Province(data);
+  });
+
+  it("shortfall", function () {
+    expect(noProducers.shortfall).equals(30);
+  });
+
+  it("profit", function () {
+    expect(noProducers.profit).equals(0);
+  });
 });

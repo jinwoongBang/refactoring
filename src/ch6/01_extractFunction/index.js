@@ -23,16 +23,16 @@ function recordDueDate(invoice) {
 
 function calculateOutstanding(invoice) {
   // 미해결 채무(outstanding) 를 계산한다.
-  let outstanding = 0;
+  let result = 0;
   for (const o of invoice.orders) {
-    outstanding += o.amount;
+    result += o.amount;
   }
-  return outstanding;
+  return result;
 }
 
 function printOwing(invoice) {
   printBanner();
-  calculateOutstanding(invoice);
+  let outstanding = calculateOutstanding(invoice);
   recordDueDate(invoice);
   printDetails(invoice, outstanding);
 }

@@ -1,6 +1,8 @@
 // [클라이언트]
+const orders = [new Order("high"), new Order("rush"), new Order("low")];
+
 const highPriorityCount = orders.filter(
-  (o) => "high" === o.priority || "rush" === o.priority
+  (o) => "high" === o.priorityString || "rush" === o.priorityString
 ).length;
 
 // [API]
@@ -9,7 +11,7 @@ class Order {
     this._priority = data.priority;
   }
 
-  get priority() {
+  get priorityString() {
     return this._priority.toString();
   }
 

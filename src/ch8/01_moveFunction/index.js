@@ -9,6 +9,7 @@ class Account {
 
   get overdraftCharge() {
     return this.type.overdraftCharge(this.daysOverdrawn);
+    // return this.type.overdraftCharge(this);
   }
 }
 
@@ -26,3 +27,19 @@ class AccountType {
     }
   }
 }
+// 소스 컨텍스트에서 가져와야할 데이터가 많다면,
+// this 를 통해 모두 전달
+// class AccountType {
+//   overdraftCharge(account) {
+//     if (this.type.isPremium) {
+//       const baseCharge = 10;
+//       if (account.daysOverdrawn <= 7) {
+//         return baseCharge;
+//       } else {
+//         return baseCharge + (account.daysOverdrawn - 7) * 0.85;
+//       }
+//     } else {
+//       return account.daysOverdrawn * 1.75;
+//     }
+//   }
+// }

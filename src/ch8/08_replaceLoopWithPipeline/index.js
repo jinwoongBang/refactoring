@@ -1,13 +1,8 @@
 export function acquireData(input) {
   const lines = input.split("\n"); // 컬렉션
-  let firstLine = true;
   const result = [];
-
-  for (const line of lines) {
-    if (firstLine) {
-      firstLine = false;
-      continue;
-    }
+  const loopItem = lines.slice(1);
+  for (const line of loopItem) {
     if (line.trim() === "") {
       continue;
     }

@@ -171,17 +171,45 @@ appliesToMass = states.includes("MA");
 ```
 
 #### 6) 문장 슬라이드하기 : Slide Statements
+
 - 관련된 변수, 함수를 모아두는 것
 - 명령-질의 분리 원칙을 지킬 것
 - 값을 반환하는 함수는 모두 부수효과가 없어야한다.
-(작성된 함수는 자기 자신 내부 데이터 이외의 다른 데이터를 변경해선 안되다는 뜻 아닐까?)
+  (작성된 함수는 자기 자신 내부 데이터 이외의 다른 데이터를 변경해선 안되다는 뜻 아닐까?)
+
 #### 7) 반복문 쪼개기 : Split Loop
+
 - 반복문 내 2가지 이상의 로직을 갖고 있다면 분리해라.
 - 성능에 대한 이슈는 그 다음 문제이다.
 - 반복문의 반복으로 병목 현상이 발생되면 그때 하나로 합치자.
 
 #### 8) 반복문을 파이프라인으로 바꾸기 : Replace Loop with Pipeline
+
 - map, filter, reduce 등 컬렉션 함수, 람다 함수 사용
 - 코드가 매우 깔끔해짐
+
 #### 9) 죽은 코드 제거하기 : Remove Dead Code
+
 - 안쓰는 코드 삭제
+
+---
+
+### 9. 데이터 조직화
+
+#### 1) 변수 쪼개기
+
+- 역할이 둘 이상인 변수가 있다면 쪼개라.
+- 역할 하나당 변수 하나다.
+
+```javascript
+// before
+let temp = 2 * (height + width);
+console.log(temp);
+temp = height * width;
+console.log(temp);
+// after
+const perimeter = 2 * (height + width);
+console.log(perimeter);
+const area = height * width;
+console.log(area);
+```

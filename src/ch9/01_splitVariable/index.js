@@ -1,46 +1,52 @@
 function distanceTravelled(scenario, time) {
-  let result;
-  
-  const primary = new Primary(scenario, time);
-
-  const primaryAcceleration = scenario.primaryForce / scenario.mass; // 가속도 (a) = 힘 (F) / 질량 (m)
-  const primaryTime = Math.min(time, senario.delay);
-  const primaryVelocity = primaryAcceleration * scenario.delay;
-
-  result = 0.5 * primaryAcceleration * primaryTime * primaryTime; // 전파된 거리
-  
-
-  let secondaryTime = time - scenario.delay;
-  const secondaryAcceleration =
-    (scenario.primaryForce + scenario.secondaryForce) / scenario.mass; // 두 번째 힘을 반영해 다시 계산
-
-  if (secondaryTime > 0) {
-    result +=
-      primaryVelocity * secondaryTime +
-      0.5 * secondaryAcceleration * secondaryTime * secondaryTime;
-  }
-  return result;
+  const calculator = new DistanceCalculator(scenario, time);
+  return calculator.distance;
 }
 
-class Primary {
+class DistanceCalculator {
   constructor(scenario, time) {
     this._scenario = scenario;
     this._time = time;
   }
 
-  get acceleration() {
+  get primaryAcceleration() {
     return this.scenario.primaryForce / this.scenario.mass;
   }
 
-  get time() {
+  get primaryTime() {
     return Math.min(time, this.senario.delay);
   }
 
-  get velocity() {
+  get primaryVelocity() {
     return this.acceleration * this.senario.delay;
   }
 
-  get distance() {
+  get primaryDistance() {
     return this.acceleration * this.time * this.time;
+  }
+
+  get secondaryTime() {
+    return this.primaryTime - this.scenario.delay;
+  }
+
+  get secondaryAcceleration() {
+    return (
+      (this.scenario.primaryForce + this.scenario.secondaryForce) /
+      scenario.mass
+    );
+  }
+
+  get secondaryDistance() {
+    return (
+      this.primaryVelocity * this.secondaryTime +
+      0.5 * this.secondaryAcceleration * this.secondaryTime * this.secondaryTime
+    );
+  }
+
+  get distance() {
+    if (this.secondaryTime > 0) {
+      return calculator.primaryDistance + calculator.secondaryDistance;
+    }
+    return calculator.primaryDistance;
   }
 }

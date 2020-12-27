@@ -1,8 +1,14 @@
 # Refactoring
 
+---
+
 ### 1. 리팩토링의 첫 단계
 
+---
+
 ### 4. 테스트 코드 작성
+
+---
 
 ### 6. 기본적인 리팩토링
 
@@ -62,6 +68,8 @@
   (험블 객체 패턴)
 - 여기서도 단계별 매개변수들을 클래스로 캡슐화 함으로써 여러 기능들을 클래스 안에서 처리
 
+---
+
 ### 7. 캡슐화
 
 - 캡슐화가 잘 되어 있다면 무언가를 변경해야 할 때 함께 고려해야할 모듈 수가 적어져서 코드를 변경하기 훨씬 쉬워진다.
@@ -101,14 +109,14 @@
 
 #### 7) 위임 숨기기 : Hide Delegate
 
-```
+```javascript
 manager = aPerson.department.manager;
 
 manager = aPerson.manager;
 class Person {
-    get manager() {
-        return this.department.manager;
-    }
+  get manager() {
+    return this.department.manager;
+  }
 }
 ```
 
@@ -121,3 +129,25 @@ class Person {
 #### 9) 알고리즘 교체하기 : Substitute Algorithm
 
 - javascript 내 제공하는 API 를 되도록 사용하자
+
+---
+
+### 8. 기능 이동
+
+#### 1) 함수 옮기기 : Move Function
+
+#### 2) 필드 옮기기 : Move Field
+
+#### 3) 문장을 함수로 옮기기 : Move Statements into Function
+
+#### 4) 문장을 호출한 곳으로 : 옮기기 Move Statements to Callers
+
+#### 5) 인라인 코드를 함수 호출로 바꾸기 : Replace Inline Code with Function Call
+
+#### 6) 문장 슬라이드하기 : Slide Statements
+
+#### 7) 반복문 쪼개기 : Split Loop
+
+#### 8) 반복문을 파이프라인으로 바꾸기 : Replace Loop with Pipeline
+
+#### 9) 죽은 코드 제거하기 : Remove Dead Code

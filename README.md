@@ -135,22 +135,53 @@ class Person {
 ### 8. 기능 이동
 
 #### 1) 함수 옮기기 : Move Function
+
 - 중첩 함수를 최상위로 옮기기
   - 임시 함수를 만들고 그 임시 함수를 원래 함수에서 호출하도록 한다.
   - 이상이 없다면 임시 함수의 이름을 원래 함수로 바꾸어 리팩토링 완료.
 - 다른 클래스로 옮기기
+
 #### 2) 필드 옮기기 : Move Field
+
 - 공유 객체로 이동하기
+
 #### 3) 문장을 함수로 옮기기 : Move Statements into Function
+
+- 공통된 로직을 하나의 함수로 옮기기
+- 예를들어, 공통된 html 태그 출력 시 사용
 
 #### 4) 문장을 호출한 곳으로 : 옮기기 Move Statements to Callers
 
+- 문장을 함수로 옮기기 반대
+- 하나의 함수로 묶어 두었던 기능이 일부 호출자에게 다르게 동작하도록 바뀌어야 할 때,
+- 다시 밖으로 내어 사용
+
 #### 5) 인라인 코드를 함수 호출로 바꾸기 : Replace Inline Code with Function Call
 
-#### 6) 문장 슬라이드하기 : Slide Statements
+```javascript
+// before
+let appliesToMass = false;
+for (const s of states) {
+  if (s === "MA") {
+    appliesToMass = true;
+  }
+}
+// after
+appliesToMass = states.includes("MA");
+```
 
+#### 6) 문장 슬라이드하기 : Slide Statements
+- 관련된 변수, 함수를 모아두는 것
+- 명령-질의 분리 원칙을 지킬 것
+- 값을 반환하는 함수는 모두 부수효과가 없어야한다.
+(작성된 함수는 자기 자신 내부 데이터 이외의 다른 데이터를 변경해선 안되다는 뜻 아닐까?)
 #### 7) 반복문 쪼개기 : Split Loop
+- 반복문 내 2가지 이상의 로직을 갖고 있다면 분리해라.
+- 성능에 대한 이슈는 그 다음 문제이다.
+- 반복문의 반복으로 병목 현상이 발생되면 그때 하나로 합치자.
 
 #### 8) 반복문을 파이프라인으로 바꾸기 : Replace Loop with Pipeline
-
+- map, filter, reduce 등 컬렉션 함수, 람다 함수 사용
+- 코드가 매우 깔끔해짐
 #### 9) 죽은 코드 제거하기 : Remove Dead Code
+- 안쓰는 코드 삭제

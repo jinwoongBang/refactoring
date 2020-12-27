@@ -1,15 +1,11 @@
 export function acquireData(input) {
   const lines = input.split("\n"); // 컬렉션
-  const result = [];
   const loopItems = lines
     .slice(1)
     .filter((line) => line.trim() !== "")
     .map((line) => line.split(","))
-    .filter((record) => record[1].trim() === "India");
+    .filter((record) => record[1].trim() === "India")
+    .map((fields) => ({ city: fields[0].trim(), phone: fields[2].trim() }));
 
-  for (const line of loopItems) {
-    result.push({ city: record[0].trim(), phone: record[2].trim() });
-  }
-
-  return result;
+  return loopItems;
 }

@@ -213,3 +213,5 @@ console.log(perimeter);
 const area = height * width;
 console.log(area);
 ```
+
+#### 2) 필드 이름 바꾸기

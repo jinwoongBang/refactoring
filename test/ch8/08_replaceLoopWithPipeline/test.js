@@ -5,6 +5,3 @@ import { acquireData } from "../../../src/ch8/08_replaceLoopWithPipeline/index.j
 
 const expect = chai.expect;
 
-describe("[8-8] replace loop with pipeline", function () {
-  it("CSV data", function () {});
-});

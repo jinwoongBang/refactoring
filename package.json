@@ -6,6 +6,9 @@
   "author": "jinwoongBang <dlopo123@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "test": "mocha --recursive './**/*.test.js'"
+  },
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.1"

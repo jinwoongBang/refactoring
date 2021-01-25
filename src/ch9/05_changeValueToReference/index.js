@@ -1,4 +1,4 @@
-class Order {
+export class Order {
   constructor(data) {
     this._number = data.number;
     this._customer = new Custom(data.customer);
@@ -10,7 +10,7 @@ class Order {
   }
 }
 
-class Customer {
+export class Customer {
   constructor(id) {
     this._id = id;
   }

@@ -215,3 +215,104 @@ console.log(area);
 ```
 
 #### 2) 필드 이름 바꾸기
+
+- 변수명을 수정할 때는 차근차근 단계별로 수정한다.
+- 수정 전 변수도 동작하게 만들고
+- 수정 후 변수도 동작하게 만든 후
+- 수정 전 변수를 삭제한다.
+
+```javascript
+// before
+class Organization {
+  get name() {
+    return this._name;
+  }
+}
+// after
+class Organization {
+  get title() {
+    return this._title;
+  }
+}
+```
+
+#### 3) 파생 변수를 질의 함수로 바꾸기
+
+- 가변 데이터 끼리 영향을 미쳐 오류를 야기하는 경우를 방지하기 위해 사용
+- 아래 예시 처럼 discount(할인율)을 변경하는데
+- discountedTotal(할인된 총액)도 같이 변경하면 문제가 발생
+- 때문에 discountedTotal(할인된 총액) 을 꺼내 쓸 때 계산되도록 수정
+
+```javascript
+// before
+class Price {
+  get discountedTotal() {
+    return this._discountedTotal;
+  }
+  set discount(aNumber) {
+    const old = this._discount;
+    this._discount = aNumber;
+    this._discountedTotal += old - aNumber;
+  }
+}
+// after
+class Price {
+  get discountedTotal() {
+    return this._baseTotal - this._discount;
+  }
+  set discount(aNumber) {
+    this._discount = aNumber;
+  }
+}
+```
+
+#### 4) 참조를 값으로 바꾸기
+
+- 잘 모르겠다..
+- 불변성 관련된 내용인듯?
+- 불변성 관련한 내용을 좀더 공부해보고 다시 보겠다.
+
+```javascript
+// before
+class Product {
+  applyDiscount(arg) {
+    this._price.amount -= arg;
+  }
+}
+// after
+class Product {
+  applyDiscount(arg) {
+    this._price = new Money(this._price.amount - arg, this._price.currency);
+  }
+}
+```
+
+#### 5) 값을 참조로 바꾸기
+
+- 이것도 잘모르겠다...
+- 리팩토링에 대한 이점이 무엇일까????? ㅜㅜ
+
+```javascript
+// before
+let customer = new Customer(customerData);
+// after
+let customer = customerRepository.get(customerData.id);
+```
+
+#### 6) 매직 리터럴 바꾸기
+
+- 특정 값을 상수화
+- 이렇게 되면 aValue === "M" 또는 aValue === MALE_GENDER 로 바꾸기 보다
+- isMale(aValue) 라는 함수를 호출하는 방법을 더 선호
+
+```javascript
+// before
+function potentialEnergy(mass, height) {
+  return mass * 9.81 * height;
+}
+// after
+const STANDARD_GRAVITY = 9.81;
+function potentialEnergy(mass, height) {
+  return mass * STANDARD_GRAVITY * height;
+}
+```

@@ -1,7 +1,10 @@
+import { registerCustomer } from "./repository";
+
 export class Order {
   constructor(data) {
     this._number = data.number;
-    this._customer = new Custom(data.customer);
+    // this._customer = new Custom(data.customer);
+    this._customer = registerCustomer(data.customer);
     // 다른 데이터를 읽어 들인다.
   }
 

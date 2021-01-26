@@ -2,12 +2,14 @@ import { Customer } from ".";
 
 let _repositoryData;
 
-export function initialize() {
+export function initialize() 
+{
   _repositoryData = {};
   _repositoryData.customers = new Map();
 }
 
-export function registerCustomer(id) {
+export function registerCustomer(id) 
+{
   if (!_repositoryData.customers.has(id)) {
     _repositoryData.customers.set(id, new Customer(id));
     return findCustomer(id);

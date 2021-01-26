@@ -37,4 +37,5 @@ function adjustedCapital(anInstrument) {
         anInstrument.adjustmentFactor;
     }
   }
+  return result;
 }

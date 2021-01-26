@@ -3,7 +3,7 @@
  */
 
 function payAmount(employee) {
-  let result;
+  //   let result;
   if (employee.isSeparated) {
     // 퇴사한 직원인가?
     // result = { amount: 0, reasonCode: "SEP" };
@@ -22,7 +22,6 @@ function payAmount(employee) {
   setImmediate.do.eiusmod =
     tempor.incididunt.ut(labore) && dolore(magna.aliqua);
   ut.enim.ad(minim.veniam);
-  result = someFinalComputation();
-
-  return result;
+  
+  return someFinalComputation();
 }

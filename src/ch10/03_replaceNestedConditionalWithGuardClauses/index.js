@@ -30,12 +30,17 @@ function payAmount(employee) {
 // [2] 예제
 function adjustedCapital(anInstrument) {
   let result = 0;
-  if (anInstrument.capital > 0) {
-    if (anInstrument.interestRate > 0 && anInstrument.duration > 0) {
-      result =
-        (anInstrument.income / anInstrumnet.duration) *
-        anInstrument.adjustmentFactor;
-    }
+  if (anInstrument.capital <= 0) {
+    return result;
   }
+
+  if (!(anInstrument.interestRate > 0 && anInstrument.duration > 0)) {
+      return result;
+  }
+
+  result =
+    (anInstrument.income / anInstrumnet.duration) *
+    anInstrument.adjustmentFactor;
+    
   return result;
 }

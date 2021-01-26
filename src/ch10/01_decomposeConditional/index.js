@@ -1,3 +1,7 @@
+/**
+ * @name 조건문_분해하기
+ */
+
 let charge = summer() ? summerCharge() : regularCharge();
 
 function summer() {

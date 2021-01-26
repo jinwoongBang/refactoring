@@ -19,12 +19,12 @@ function speeds(birds) {
 
 // 깃털 상태
 function plumage(bird) {
-  return new Bird(bird).plumage;
+  return createBird(bird).plumage;
 }
 
 // 비행 속도
 function airSpeedVelocity(bird) {
-  return new Bird(bird).airSpeedVelocity;
+  return createBird(bird).airSpeedVelocity;
 }
 
 function createBird(bird) {
@@ -32,11 +32,11 @@ function createBird(bird) {
     case "유럽 제비":
       return new EuropeanSwallow(bird);
     case "아프리카 제비":
-      return 40 - 2 * this.numberOfCoconuts;
+      return new AfricanSwallow(bird);
     case "노르웨이 파랑 앵무":
-      return this.isNailed ? 0 : 10 + this.voltage / 10;
+      return new NorwegianBlueParrot(bird);
     default:
-      return null;
+      return new Bird(bird);
   }
 }
 

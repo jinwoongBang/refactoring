@@ -13,9 +13,17 @@ const myRating = rating(voyage, history);
 
 // 투자 등급
 function rating(voyage, history) {
-  return new Rating(voyage, history).value;
+  //   return new Rating(voyage, history).value;
+  return createRating(voyage, history).value;
 }
 
+function createRating(voyage, history) {
+  if (voyage.zone === "중국" && history.some((v) => "중국" === v.zone)) {
+    return new ExperiencedChinaRating(voyage, history);
+  } else {
+    return new Rating(voyage, history);
+  }
+}
 class Rating {
   constructor(voyage, history) {
     this.voyage = voyage;
@@ -106,3 +114,5 @@ class Rating {
     return this.history.some((v) => "중국" === v.zone);
   }
 }
+
+class ExperiencedChinaRating extends Rating {}

@@ -29,16 +29,16 @@ function payAmount(employee) {
 
 // [2] 예제
 function adjustedCapital(anInstrument) {
-  if (
+  return isNegativeInstrument()
+    ? 0
+    : (anInstrument.income / anInstrumnet.duration) *
+        anInstrument.adjustmentFactor;
+}
+
+function isNegativeInstrument() {
+  return (
     anInstrument.capital <= 0 ||
     anInstrument.interestRate <= 0 ||
     anInstrument.duration <= 0
-  ) {
-    return 0;
-  }
-
-  return (
-    (anInstrument.income / anInstrumnet.duration) *
-    anInstrument.adjustmentFactor
   );
 }

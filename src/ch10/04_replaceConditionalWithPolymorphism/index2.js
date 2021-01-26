@@ -70,10 +70,6 @@ class Rating {
 
     result += this.history.filter((v) => v.profit < 0).length;
 
-    if (this.voyage.zone === "중국" && this.hasChinaHistory) {
-      result -= 2;
-    }
-
     return Math.max(result, 0);
   }
 
@@ -115,4 +111,10 @@ class Rating {
   }
 }
 
-class ExperiencedChinaRating extends Rating {}
+class ExperiencedChinaRating extends Rating {
+  // 선장의 항해 이력 위험요소
+  get captainHistoryRisk() {
+    const result = super.captainHistoryRisk - 2;
+    return Math.max(result, 0);
+  }
+}
